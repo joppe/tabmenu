@@ -1,0 +1,6 @@
+[submodule "scripts/aap"]
+	path = scripts/aap
+	url = git@github.com:joppe/aap.git
+[submodule "styles/sass"]
+	path = styles/sass
+	url = git@github.com:joppe/sass.git
