@@ -2,9 +2,19 @@
 <html>
 <head>
 	<title>Tabmenu add</title>
+	<link rel="stylesheet" type="text/css" href="styles/screen.css">
+	<script type="text/javascript" src="scripts/3th_party/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.tabmenu.js"></script>
+	<script type="text/javascript">
+		jQuery(function ($) {
+			'use strict';
+
+			$('.tabmenu').tabmenu();
+		});
+	</script>
 </head>
 <body>
-	<ol>
+	<ol class="tabmenu">
 		<li>
 			<a href="#tab-1">Tab 1</a>
 		</li>
@@ -15,13 +25,13 @@
 			<a href="#tab-3">Tab 3</a>
 		</li>
 	</ol>
-	<div id="tab-1">
+	<div id="tab-1" class="tab-content">
 		<p>Content tab 1</p>
 	</div>
-	<div id="tab-2">
+	<div id="tab-2" class="tab-content">
 		<p>Content tab 2</p>
 	</div>
-	<div id="tab-3">
+	<div id="tab-3" class="tab-content">
 		<p>Content tab 3</p>
 	</div>
 </body>

@@ -1,0 +1,24 @@
+@import 'sass/_reset.scss';
+@import 'sass/_html5.scss';
+
+body {
+    @include reset-spacing;
+
+    font-size: 12px;
+    line-height: 17px;
+    background: white;
+}
+
+li a {
+    &.active {
+        font-weight: bold;
+	}
+}
+
+div.tab-content {
+    display: none;
+
+    &.active {
+        display: block;
+	}
+}
