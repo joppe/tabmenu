@@ -9,7 +9,9 @@
 		jQuery(function ($) {
 			'use strict';
 
-			$('.tabmenu').tabmenu();
+			$('.tabmenu').tabmenu({
+				tab_default_active: 'li:last'
+			});
 		});
 	</script>
 </head>
