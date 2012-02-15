@@ -1,14 +1,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 12px;
-  line-height: 17px;
-  background: white; }
+  font: 0.75%/1em;
+  background: white;
+  font-family: Arial;
+  color: black; }
 
-li.active {
-  font-weight: bold; }
+li {
+  font-size: 1.333em;
+  line-height: 1.438em; }
+  li.active {
+    font-weight: bold; }
 
 div.tab-content {
+  font-size: 1.167em;
+  line-height: 1.429em;
   display: none; }
   div.tab-content.active {
     display: block; }

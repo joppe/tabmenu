@@ -1,21 +1,27 @@
 @import 'sass/_reset.scss';
 @import 'sass/_html5.scss';
+@import 'sass/_utils.scss';
 
 body {
     @include reset-spacing;
+    @include body-reset-font-size;
 
-    font-size: 12px;
-    line-height: 17px;
     background: white;
+    font-family: Arial;
+    color: black;
 }
 
 li {
+    @include font-px-to-em(16, 23);
+
     &.active {
         font-weight: bold;
 	}
 }
 
 div.tab-content {
+    @include font-px-to-em(14, 20);
+
     display: none;
 
     &.active {
