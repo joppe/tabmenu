@@ -61,7 +61,24 @@
 	 * @return {jQuery}
 	 */
 	function getActiveTab($container, settings) {
-		return $container.find(settings.tab_container_selector + '.' + settings.tab_active_class);
+		return $container.find(settings.tab_selector + '.' + settings.tab_active_class);
+	}
+
+	/**
+	 * Handle a click event
+	 *
+	 * @param {jQuery} $tab
+	 * @param {jQuery} $container
+	 * @param {Object} settings
+	 */
+	function handleClick($tab, $container, settings) {
+		var current_active_tab = getActiveTab($container, settings);
+
+		if (current_active_tab.length > 0) {
+			setInActive(current_active_tab, settings);
+		}
+
+		setActive($tab, settings);
 	}
 
 	/**
@@ -71,25 +88,31 @@
 	 * @param {Object} settings
 	 */
 	function createTabmenu($container, settings) {
-		$container.on('click', settings.tab_container_selector, function (event) {
-			var current_active_tab = getActiveTab($container, settings);
+		var hash = window.location.hash,
+			active_tab;
 
+		$container.on('click', settings.tab_selector, function (event) {
 			event.preventDefault();
 
-			if (current_active_tab.length > 0) {
-				setInActive(current_active_tab, settings);
-			}
-
-			setActive($(this), settings);
+			handleClick($(this), $container, settings);
 		});
 
-		if (getActiveTab($container, settings).length === 0) {
-			$container.find(settings.tab_default_active).trigger('click');
+		// check for hash in url
+		if (hash.length > 1) {
+			active_tab = $container.find('a[href="' + hash + '"]').parent(settings.tab_selector);
 		}
+		if (typeof active_tab === 'undefined' || active_tab.length === 0) {
+			active_tab = getActiveTab($container, settings);
+		}
+		if (typeof active_tab === 'undefined' || active_tab.length === 0) {
+			active_tab = $container.find(settings.tab_default_active);
+		}
+
+		active_tab.trigger('click');
 	}
 
 	var default_settings = {
-		tab_container_selector: 'li',
+		tab_selector: 'li',
 		tab_active_class: 'active',
 		tab_default_active: 'li:first',
 		target_active_class: 'active'
